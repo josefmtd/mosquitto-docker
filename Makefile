@@ -1,6 +1,11 @@
+include .env
+
 .PHONY: install
 install:
 		docker-compose up --detach --build
+.PHONY: password
+password:
+		docker-compose exec mqtt mosquitto_passwd -b /mosquitto/config/conf.d/passwd ${MQTT_USER} ${MQTT_PASS}
 
 .PHONY: stop
 stop:

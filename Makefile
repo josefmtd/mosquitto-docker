@@ -1,14 +1,6 @@
-.PHONY: config
-config:
-		mkdir config
-		cp ./mosquitto.conf.example ./config/mosquitto.conf
-
-.PHONY: run
-run:
-		docker-compose up -d
-
 .PHONY: install
-install: config run
+install:
+		docker-compose up --detach --build
 
 .PHONY: stop
 stop:

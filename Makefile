@@ -13,7 +13,7 @@ stop:
 
 .PHONY: clean
 clean:
-		rm -rf config data log
+		rm -rf data log
 
 .PHONY: remove
 remove: stop clean

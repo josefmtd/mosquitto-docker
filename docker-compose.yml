@@ -1,10 +1,19 @@
-mqtt:
-  build: ./build
-  container_name: mosquitto
-  ports:
-    - 1883:1883
-    - 9001:9001
-  volumes:
-    - ./config:/mosquitto/config/conf.d:rw
-    - ./log:/mosquitto/log:rw
-    - ./data:/mosquitto/data:rw
+version: '3.8'
+
+services:
+  mqtt:
+    build: ./build
+    container_name: mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ./config:/mosquitto/config/conf.d:rw
+      - ./log:/mosquitto/log:rw
+      - ./data:/mosquitto/data:rw
+    restart: always
+
+networks:
+  default:
+    external:
+      name: backend
